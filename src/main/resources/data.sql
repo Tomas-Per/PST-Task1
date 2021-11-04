@@ -6,11 +6,11 @@ INSERT INTO Vartotojas VALUES(2, '38045', 'Jonas');
 INSERT INTO Vartotojas VALUES(3, '39074', 'Petras');
 
 
-INSERT INTO Veiksmai VALUES(1, '01.10.21', 1,'insert');
-INSERT INTO Veiksmai VALUES(2, '01.10.21', 2,'update');
-INSERT INTO Veiksmai VALUES(3, '01.10.21', 3,'delete');
-INSERT INTO Veiksmai VALUES(4, '01.11.21', 1,'insert');
-INSERT INTO Veiksmai VALUES(5, '01.11.21', 2,'delete');
-INSERT INTO Veiksmai VALUES(6, '01.12.21', 3,'update');
+INSERT INTO Veiksmai VALUES(1, '2021-10-01', 1,'insert');
+INSERT INTO Veiksmai VALUES(2, '2021-10-01', 2,'update');
+INSERT INTO Veiksmai VALUES(3, '2021-10-01', 3,'delete');
+INSERT INTO Veiksmai VALUES(4, '2021-11-01', 1,'insert');
+INSERT INTO Veiksmai VALUES(5, '2021-11-01', 2,'delete');
+INSERT INTO Veiksmai VALUES(6, '2021-12-01', 3,'update');
 
 

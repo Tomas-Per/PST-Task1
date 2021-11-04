@@ -22,12 +22,12 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${veiksmai}" var="veiksmas">
+    <c:forEach items="${veiksmai}" var="veiksmas" varStatus="loop">
         <tr>
             <td>${veiksmas.id}</td>
             <td>${veiksmas.veiksmas}</td>
             <td>${veiksmas.vartotojoId}</td>
-            <td><c:out value="${names[veiksmas.id - 1]}"/></td>
+            <td><c:out value="${names[loop.index]}"/></td>
             <td>${veiksmas.data}</td>
             <td><a type="button" href="/update-veiksmas/${veiksmas.id}">UPDATE</a></td>
             <td><a type="button" href="/delete-veiksmas/${veiksmas.id}">DELETE</a></td>

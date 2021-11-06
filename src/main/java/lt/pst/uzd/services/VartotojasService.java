@@ -37,8 +37,10 @@ public class VartotojasService {
     public void delete(Vartotojas vartotojas) {
 
         Vartotojas vartotojas1 = vartotojasRepository.findByTelNrAndVardas(vartotojas.getTelNr(), vartotojas.getVardas());
-        vartotojasRepository.delete(vartotojas1);
-        veiksmaiRepository.deleteAllByVartotojoId(vartotojas1.getId());
+        if(vartotojas1 != null) {
+            vartotojasRepository.delete(vartotojas1);
+            veiksmaiRepository.deleteAllByVartotojoId(vartotojas1.getId());
+        }
     }
 
     public Vartotojas replaceVartotojas(Vartotojas vartotojas, int id) {

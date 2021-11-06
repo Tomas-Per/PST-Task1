@@ -4,6 +4,7 @@ import lt.pst.uzd.models.Vartotojas;
 import lt.pst.uzd.services.VartotojasService;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -33,6 +34,7 @@ public class VartotojasController {
     }
 
     @DeleteMapping("/Vartotojas/{id}")
+    @Transactional
     public void deleteById(@PathVariable("id") int id) {
 
         try {

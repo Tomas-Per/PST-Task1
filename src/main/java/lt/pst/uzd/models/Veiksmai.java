@@ -1,9 +1,20 @@
 package lt.pst.uzd.models;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Veiksmai {
+
+    public Veiksmai() {
+
+    }
+    public Veiksmai(int id, String veiksmas, int vartotojoId, String data) {
+        this.id = id;
+        this.veiksmas = veiksmas;
+        this.vartotojoId = vartotojoId;
+        this.data = data;
+    }
 
     @Id
     @Column
@@ -49,5 +60,18 @@ public class Veiksmai {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Veiksmai created = (Veiksmai) o;
+        return id == created.id && Objects.equals(veiksmas, created.veiksmas);
     }
 }

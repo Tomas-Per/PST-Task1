@@ -11,6 +11,10 @@
             <form:option value="delete" label="delete"/>
         </form:select>
 
+        <form:label path="vartotojoId">vartotojo ID</form:label>
+        <form:input path="vartotojoId" type="text" required="required" />
+        <form:errors path="vartotojoId" />
+
         <form:label path="data">data</form:label>
         <form:input path="data" type="text" required="required" />
         <form:errors path="data" />

@@ -1,6 +1,5 @@
 package lt.pst.uzd.controllers;
 
-import lt.pst.uzd.models.Vartotojas;
 import lt.pst.uzd.models.Veiksmai;
 import lt.pst.uzd.services.VeiksmaiService;
 import org.springframework.stereotype.Controller;
@@ -11,9 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.servlet.http.HttpSession;
-import java.time.LocalDate;
 
 @Controller
 public class VeiksmaiMVCController {
@@ -39,45 +35,25 @@ public class VeiksmaiMVCController {
     }
 
     @PostMapping("/add-veiksmas")
-    public String add(ModelMap model, @ModelAttribute("naujasVeiksmas") Veiksmai naujasVeiksmas, BindingResult result,
-                      HttpSession session) {
+    public String add(ModelMap model, @ModelAttribute("naujasVeiksmas") Veiksmai naujasVeiksmas, BindingResult result) {
 
         if(result.hasErrors()) {
             return "add-veiksmas";
         }
 
-        Vartotojas var = (Vartotojas) session.getAttribute("vartotojas");
 
         naujasVeiksmas.setId(0);
-        naujasVeiksmas.setVartotojoId(1);
-        //naujasVeiksmas.setVartotojoId(var.getId());
+
         veiksmaiService.save(naujasVeiksmas);
-        //session does not work with testing
-//        Veiksmai veiksmas = new Veiksmai();
-//        veiksmas.setId(0);
-//        veiksmas.setVeiksmas("insert");
-//        veiksmas.setVartotojoId(var.getId());
-//        veiksmas.setData(LocalDate.now().toString());
-//
-//        veiksmaiService.save(veiksmas);
 
         return "redirect:/list-veiksmai";
     }
 
     @GetMapping("/delete-veiksmas/{id}")
     @Transactional
-    public String delete(@PathVariable int id, HttpSession session) {
+    public String delete(@PathVariable int id) {
         veiksmaiService.deleteById(id);
 
-        Vartotojas var = (Vartotojas) session.getAttribute("vartotojas");
-        //session does not work with testing
-//        Veiksmai veiksmas = new Veiksmai();
-//        veiksmas.setId(0);
-//        veiksmas.setVeiksmas("delete");
-//        veiksmas.setVartotojoId(var.getId());
-//        veiksmas.setData(LocalDate.now().toString());
-//
-//        veiksmaiService.save(veiksmas);
         return "redirect:/list-veiksmai";
     }
 
@@ -89,23 +65,11 @@ public class VeiksmaiMVCController {
 
     @PostMapping("/update-veiksmas/{id}")
     public String update(ModelMap model, @ModelAttribute("naujasVeiksmas") Veiksmai naujasVeiksmas, @PathVariable int id,
-                         BindingResult result , HttpSession session) {
+                         BindingResult result) {
         if(result.hasErrors()) {
             return "add-veiksmas";
         }
 
-        Vartotojas var = (Vartotojas) session.getAttribute("vartotojas");
-        //session does not work with testing
-//        Veiksmai veiksmas = new Veiksmai();
-//        veiksmas.setId(0);
-//        veiksmas.setVeiksmas("update");
-//        veiksmas.setVartotojoId(var.getId());
-//        veiksmas.setData(LocalDate.now().toString());
-//
-//        veiksmaiService.save(veiksmas);
-//
-//        naujasVeiksmas.setVartotojoId(var.getId());
-        naujasVeiksmas.setVartotojoId(1);
         veiksmaiService.replaceVeiksmas(naujasVeiksmas, id);
         return "redirect:/list-veiksmai";
     }

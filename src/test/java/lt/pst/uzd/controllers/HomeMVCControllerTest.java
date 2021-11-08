@@ -43,7 +43,6 @@ public class HomeMVCControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("home"))
                 .andExpect(MockMvcResultMatchers.forwardedUrl("/WEB-INF/jsp/home.jsp"))
-                .andExpect(MockMvcResultMatchers.model().attributeExists("vartotojas"))
                 .andReturn();
     }
 }
